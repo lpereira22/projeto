@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{ 
+    --text-color: white; /*--name-name: difine um variavel para reutilizar ao longo do css*/
+    --bg-url: url(./assets/assets/bg-desktop.jpg);
+    --stroke-color: rgba(255, 255, 255, 0.5);
+    --surface-color: rgba(255, 255, 255, 0.1);
+    --surface-color-hover: rgba(255, 255, 255, 0.2);
+    --highlight-color: rgba(255, 255, 255, 0.1);
+    --swithch-bg-url: url(./assets/assets/moon-stars.svg);
+}
+
+.light{
+    --text-color: black;
+    --bg-url: url(./assets/assets/Desktop/bg-desktop-light.png);
+    --stroke-color: rgba(0, 0, 0, 0.5);
+    --surface-color: rgba(0, 0, 0, 0.1);
+    --surface-color-hover: rgba(0, 0, 0, 0.2);
+    --highlight-color: rgba(0, 0, 0, 0.1);
+    --swithch-bg-url: url(./assets/assets/sun.svg);
+}
+
+body {
+    /*
+    background: url(./assets/assets/bg-mobile.jpg) ;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    */
+
+    /*background: color image repeat position/size*/
+    background: var(--bg-url) no-repeat top center;
+}
+
+body *{
+    font-family: 'Inter', sans-serif;/* estilizar fonte*/
+    color: var(--text-color); /*reutilizando variavel*/
+}
+
+#container {
+    width: 360px; /*largura*/
+    margin: 56px auto auto auto;/*espaço por fora*/
+    padding: 0px 24px;/*espaço por dentro*/
+    
+}
+
+#profile {
+    text-align: center; /*alinhar texto*/
+    padding: 24px;
+}
+
+#profile img {
+    width: 112px;
+    margin: auto;
+}
+
+#profile p {
+    font-weight: 400; /*peso da fonte*/
+    line-height: 24px;
+}
+
+#switch {
+    position: relative; /* alinha dentro do box */
+    width: 64px;
+    margin: 4px auto;
+}
+
+#switch button{
+    width: 32px;
+    height: 32px;
+    background: white var(--swithch-bg-url) no-repeat center;
+    border-radius: 50px; /*arredondamento*/
+    
+    left: 0; /*jogar pra esquerda*/
+    position: absolute; /*colocar em camadas*/
+    z-index: 1; /*definir qual camada vai fica 0,1,2 ou 3...*/
+    top: 50%; 
+    transform: translateY(-50%); /*distancia vertical do box*/
+}
+
+.light #switch button{
+    right: 0;
+    left: initial; /* iniciar na esquerda do box*/
+}
+
+#switch span{
+    display: block; /*preencher toda coluna*/
+    width: 64px;
+    height: 24px;
+    background: var(--surface-color);
+    border: var(--stroke-color);
+    backdrop-filter: blur(4px);
+    border-radius: 9999px;
+}
+
+ul{
+    list-style: none; /*Ocultar estilo de lista*/
+    display: flex;
+    flex-direction: column; /*direção dos itens (linha ou coluna)*/
+    gap: 16px; /* espaçamento entre itens*/
+    padding: 24px 0;
+}
+
+ul li a {
+    display: flex; /* deixa itens em linha != block */
+    align-items: center; /* Eixo Y = horizontal */
+    justify-content: center; /* Eixo X = vertical */
+
+    padding: 16px 24px 16px; /* top - right/left - bottow*//*espaçamento entre o couteudo e o box*/
+    background: var(--surface-color); /*red green blue alpha(transparencia)*/
+    border: 1px solid var(--stroke-color);
+    border-radius: 8px; /*arredondamento de borda em RARIOS*/
+    backdrop-filter: blur(4px); /*ambaçamento*/
+    text-decoration: none; /* decoração de linha(underline, overline*/
+    font-weight: 500;
+
+    transition: background 0.5s;
+}
+
+ul li a:hover { /*mudança de comportamento ao coloca mouse em cima*/
+    background: var(--surface-color-hover); /*red green blue alpha(transparencia)*/
+    border: 1.5px solid var(--text-color);
+}
+
+#social-links{
+    padding: 24px 0;
+    display: flex;
+    align-items: center; /*centralizar na vertical(y)*/
+    justify-content: center; /*centralizar na horizontal(x)*/
+    
+}
+
+div ion-icon{
+    font-size: 24px; /*tamanho da fonte*/
+    transition: background 0.2s;
+    padding: 16px;
+    border-radius: 50%;
+    
+}
+
+div ion-icon:hover{
+    background: var(--highlight-color); /*reutilizando variavel*/
+    border:rgba(255, 255, 255, 1);
+    
+}
+
+footer{
+    padding: 24px;
+    text-align: center; /* alinhar o texto na coluna */
+    font-size: 14px;
+}
+
