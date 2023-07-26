@@ -58,6 +58,7 @@ body *{
 #profile img {
     width: 112px;
     margin: auto;
+    border-radius: 50%;
 }
 
 #profile p {
@@ -82,11 +83,15 @@ body *{
     z-index: 1; /*definir qual camada vai fica 0,1,2 ou 3...*/
     top: 50%; 
     transform: translateY(-50%); /*distancia vertical do box*/
+    animation: slide-back 0.4s; /*animação criada para mover lentamente o button de light para dark*/
+}
+
+#switch button:hover{/*quando passar mouse em cima, obter animação*/
+    outline: 8px solid var(--highlight-color)
 }
 
 .light #switch button{
-    right: 0;
-    left: initial; /* iniciar na esquerda do box*/
+    animation: slide-in 0.4s forwards; /*animação criada para mover lentamente o button de dark para light*/
 }
 
 #switch span{
@@ -162,5 +167,23 @@ footer{
     }
     .light{
         --bg-url: url(./assets/assets/bg-light.jpg)
+    }
+}
+
+@keyframes slide-in {
+    from{
+        left: 0;
+    }
+    to {
+        left: 50%;
+    }
+}
+
+@keyframes slide-back {
+    from{
+        left: 50%;
+    }
+    to {
+        left: 0%;
     }
 }
