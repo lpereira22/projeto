@@ -7,6 +7,40 @@
     <link rel="stylesheet" href="./portfolio.css">
 </head>
 <body>
-    <h1> Ainda não possuo portfólio, Sorry :(</h1>
+    <div id="container">
+        <h1 id="titulo"> Portifólio: </h1>
+            <div id="multiCards">
+            
+            </div>
+            <div id="obs">
+                <p>Estes Projetos foram retirado do github utilizando API(fetch).</p>
+            </div>            
+    </div>
+
+    
+    <script>
+        var multiCards = document.getElementById('multiCards')
+        
+
+        fetch('https://api.github.com/users/lpereira22/repos')
+        .then(res => res.json())
+        .then(json => {console.log(json)
+            var str=""
+            for(let i = 0; i < json.length; i++){
+                str += `<a href="${json[i].html_url}" target="blank">
+                            <div class="cards">
+                                <h3> ${json[i].name} </h3>
+                                <p> ${json[i].description} </p>
+                                <p class="date"> ${json[i].pushed_at} </p>
+                            </div>
+                        </a>` 
+            }
+            
+            multiCards.innerHTML = str;
+        }
+    )
+        .catch(err => console.error(err));
+
+    </script>
 </body>
 </html>
